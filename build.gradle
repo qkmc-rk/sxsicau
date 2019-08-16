@@ -9,10 +9,43 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
+	mavenLocal()
+	maven {url 'http://maven.aliyun.com/nexus/content/groups/public'}
 	mavenCentral()
 }
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	//jpa
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	//redis后面做token存储的
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	//邮件支持
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	//添加aop支持
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
+	//定时任务
+	implementation 'org.springframework.boot:spring-boot-starter-quartz'
+
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'mysql:mysql-connector-java'
+
+	//用于发送http请求的包
+	//低于4.3版本的httpClient报错java.lang.NoClassDefFoundError
+	implementation 'org.apache.httpcomponents:httpclient:4.3.3'
+
+	//七牛云的包支持
+	implementation 'com.qiniu:qiniu-java-sdk:7.2.11'
+
+	//swagger与swagger-ui依赖引入.
+	implementation 'io.springfox:springfox-swagger2:2.7.0'
+	implementation 'io.springfox:springfox-swagger-ui:2.7.0'
+	//mail的包
+	compile group: 'javax.mail', name: 'mail', version: '1.4.1'
+
+	//引入sms相关依赖 手机短信支持
+	implementation 'com.github.qcloudsms:qcloudsms:1.0.6'
+
 }
