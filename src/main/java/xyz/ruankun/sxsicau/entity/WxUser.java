@@ -4,9 +4,7 @@ package xyz.ruankun.sxsicau.entity;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -15,20 +13,23 @@ import java.util.Date;
 @DynamicUpdate
 public class WxUser {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Integer id;
-
+    @Column(name = "openid")
     private String openId;
-
+    @Column(name = "wx_number")
     private String wxNumber;
-
+    @Column(name = "is_black")
     private Boolean isBlack;
-
+    @Column(name = "gmt_create")
     private Date gmtCreate;
-
+    @Column(name = "gmt_modified")
     private Date gmtModified;
-
+    @Column(name = "binding_number")
     private String bindingNumber;    // 绑定的学号或者教师号
-
+    @Column(name = "binding_role")
     private Integer bindingRole;    // 0-学生 1-教师
 
     /**
@@ -104,8 +105,10 @@ public class WxUser {
      * @param bindingRole
      */
     public void setBindingRole(Integer bindingRole) {
-        if (bindingRole == 0)
+        if (bindingRole != null && bindingRole == 0)
             this.bindingRole = STUDENT;
+        else if (bindingRole == null)
+            this.bindingRole = null;
         else
             this.bindingRole = TEACHER;
 

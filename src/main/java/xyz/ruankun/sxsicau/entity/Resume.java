@@ -15,253 +15,253 @@ public class Resume {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "sx_id")
-    private Integer sx_id;
+    private Integer sxId;
     @Column(name = "sx_teacher_id")
-    private String sx_teacher_id;
+    private String sxTeacherId;
     @Column(name = "sx_picture")
-    private String sx_picture;
+    private String sxPicture;
     @Column(name = "sx_gtm_modified")
-    private Date sx_gtm_modified;
+    private Date sxGtmModified;
     @Column(name = "sx_gtm_create")
-    private Date sx_gtm_create;
+    private Date sxGtmCreate;
     @Column(name = "sx_name")
-    private String sx_name;
+    private String sxName;
     @Column(name = "sx_sex")
-    private String sx_sex;
+    private String sxSex;
     @Column(name = "sx_birth")
-    private String sx_birth;
+    private String sxBirth;
     @Column(name = "sx_type")
-    private String sx_type;
+    private String sxType;
     @Column(name = "sx_unit")
-    private String sx_unit;
+    private String sxUnit;
     @Column(name = "sx_admin")
-    private String sx_admin;
+    private String sxAdmin;
     @Column(name = "sx_admin_phone")
-    private String sx_admin_phone;
+    private String sxAdminPhone;
     @Column(name = "sx_tech_major")
-    private String sx_tech_major;
+    private String sxTechMajor;
     @Column(name = "sx_email")
-    private String sx_email;
+    private String sxEmail;
     @Column(name = "sx_introduce")
-    private String sx_introduce;
+    private String sxIntroduce;
     @Column(name = "sx_work_exp")
-    private String sx_work_exp;
+    private String sxWorkExp;
     @Column(name = "sx_edu_exp")
-    private String sx_edu_exp;
+    private String sxEduExp;
     @Column(name = "sx_award")
-    private String sx_award;
+    private String sxAward;
     @Column(name = "sx_other_status")
-    private String sx_other_status;
+    private String sxOtherStatus;
     @Column(name = "sx_research_area")
-    private String sx_research_area;
+    private String sxResearchArea;
     @Column(name = "sx_sci_resch_project")
-    private String sx_sci_resch_project;
+    private String sxSciReschProject;
     @Column(name = "sx_paper")
-    private String sx_paper;
+    private String sxPaper;
     @Column(name = "sx_book")
-    private String sx_book;
+    private String sxBook;
     @Column(name = "sx_students")
-    private String sx_students;
+    private String sxStudents;
     @Column(name = "sx_is_visible")
-    private Boolean sx_is_visible;
+    private Boolean sxIsVisible;
 
-    public Integer getSx_id() {
-        return sx_id;
+    public Integer getSxId() {
+        return sxId;
     }
 
-    public void setSx_id(Integer sx_id) {
-        this.sx_id = sx_id;
+    public void setSxId(Integer sxId) {
+        this.sxId = sxId;
     }
 
-    public String getSx_teacher_id() {
-        return sx_teacher_id;
+    public String getSxTeacherId() {
+        return sxTeacherId;
     }
 
-    public void setSx_teacher_id(String sx_teacher_id) {
-        this.sx_teacher_id = sx_teacher_id;
+    public void setSxTeacherId(String sxTeacherId) {
+        this.sxTeacherId = sxTeacherId;
     }
 
-    public String getSx_picture() {
-        return sx_picture;
+    public String getSxPicture() {
+        return sxPicture;
     }
 
-    public void setSx_picture(String sx_picture) {
-        this.sx_picture = sx_picture;
+    public void setSxPicture(String sxPicture) {
+        this.sxPicture = sxPicture;
     }
 
-    public Date getSx_gtm_modified() {
-        return sx_gtm_modified;
+    public Date getSxGtmModified() {
+        return sxGtmModified;
     }
 
-    public void setSx_gtm_modified(Date sx_gtm_modified) {
-        this.sx_gtm_modified = sx_gtm_modified;
+    public void setSxGtmModified(Date sxGtmModified) {
+        this.sxGtmModified = sxGtmModified;
     }
 
-    public Date getSx_gtm_create() {
-        return sx_gtm_create;
+    public Date getSxGtmCreate() {
+        return sxGtmCreate;
     }
 
-    public void setSx_gtm_create(Date sx_gtm_create) {
-        this.sx_gtm_create = sx_gtm_create;
+    public void setSxGtmCreate(Date sxGtmCreate) {
+        this.sxGtmCreate = sxGtmCreate;
     }
 
-    public String getSx_name() {
-        return sx_name;
+    public String getSxName() {
+        return sxName;
     }
 
-    public void setSx_name(String sx_name) {
-        this.sx_name = sx_name;
+    public void setSxName(String sxName) {
+        this.sxName = sxName;
     }
 
-    public String getSx_sex() {
-        return sx_sex;
+    public String getSxSex() {
+        return sxSex;
     }
 
-    public void setSx_sex(String sx_sex) {
-        this.sx_sex = sx_sex;
+    public void setSxSex(String sxSex) {
+        this.sxSex = sxSex;
     }
 
-    public String getSx_birth() {
-        return sx_birth;
+    public String getSxBirth() {
+        return sxBirth;
     }
 
-    public void setSx_birth(String sx_birth) {
-        this.sx_birth = sx_birth;
+    public void setSxBirth(String sxBirth) {
+        this.sxBirth = sxBirth;
     }
 
-    public String getSx_type() {
-        return sx_type;
+    public String getSxType() {
+        return sxType;
     }
 
-    public void setSx_type(String sx_type) {
-        this.sx_type = sx_type;
+    public void setSxType(String sxType) {
+        this.sxType = sxType;
     }
 
-    public String getSx_unit() {
-        return sx_unit;
+    public String getSxUnit() {
+        return sxUnit;
     }
 
-    public void setSx_unit(String sx_unit) {
-        this.sx_unit = sx_unit;
+    public void setSxUnit(String sxUnit) {
+        this.sxUnit = sxUnit;
     }
 
-    public String getSx_admin() {
-        return sx_admin;
+    public String getSxAdmin() {
+        return sxAdmin;
     }
 
-    public void setSx_admin(String sx_admin) {
-        this.sx_admin = sx_admin;
+    public void setSxAdmin(String sxAdmin) {
+        this.sxAdmin = sxAdmin;
     }
 
-    public String getSx_admin_phone() {
-        return sx_admin_phone;
+    public String getSxAdminPhone() {
+        return sxAdminPhone;
     }
 
-    public void setSx_admin_phone(String sx_admin_phone) {
-        this.sx_admin_phone = sx_admin_phone;
+    public void setSxAdminPhone(String sxAdminPhone) {
+        this.sxAdminPhone = sxAdminPhone;
     }
 
-    public String getSx_tech_major() {
-        return sx_tech_major;
+    public String getSxTechMajor() {
+        return sxTechMajor;
     }
 
-    public void setSx_tech_major(String sx_tech_major) {
-        this.sx_tech_major = sx_tech_major;
+    public void setSxTechMajor(String sxTechMajor) {
+        this.sxTechMajor = sxTechMajor;
     }
 
-    public String getSx_email() {
-        return sx_email;
+    public String getSxEmail() {
+        return sxEmail;
     }
 
-    public void setSx_email(String sx_email) {
-        this.sx_email = sx_email;
+    public void setSxEmail(String sxEmail) {
+        this.sxEmail = sxEmail;
     }
 
-    public String getSx_introduce() {
-        return sx_introduce;
+    public String getSxIntroduce() {
+        return sxIntroduce;
     }
 
-    public void setSx_introduce(String sx_introduce) {
-        this.sx_introduce = sx_introduce;
+    public void setSxIntroduce(String sxIntroduce) {
+        this.sxIntroduce = sxIntroduce;
     }
 
-    public String getSx_work_exp() {
-        return sx_work_exp;
+    public String getSxWorkExp() {
+        return sxWorkExp;
     }
 
-    public void setSx_work_exp(String sx_work_exp) {
-        this.sx_work_exp = sx_work_exp;
+    public void setSxWorkExp(String sxWorkExp) {
+        this.sxWorkExp = sxWorkExp;
     }
 
-    public String getSx_edu_exp() {
-        return sx_edu_exp;
+    public String getSxEduExp() {
+        return sxEduExp;
     }
 
-    public void setSx_edu_exp(String sx_edu_exp) {
-        this.sx_edu_exp = sx_edu_exp;
+    public void setSxEduExp(String sxEduExp) {
+        this.sxEduExp = sxEduExp;
     }
 
-    public String getSx_award() {
-        return sx_award;
+    public String getSxAward() {
+        return sxAward;
     }
 
-    public void setSx_award(String sx_award) {
-        this.sx_award = sx_award;
+    public void setSxAward(String sxAward) {
+        this.sxAward = sxAward;
     }
 
-    public String getSx_other_status() {
-        return sx_other_status;
+    public String getSxOtherStatus() {
+        return sxOtherStatus;
     }
 
-    public void setSx_other_status(String sx_other_status) {
-        this.sx_other_status = sx_other_status;
+    public void setSxOtherStatus(String sxOtherStatus) {
+        this.sxOtherStatus = sxOtherStatus;
     }
 
-    public String getSx_research_area() {
-        return sx_research_area;
+    public String getSxResearchArea() {
+        return sxResearchArea;
     }
 
-    public void setSx_research_area(String sx_research_area) {
-        this.sx_research_area = sx_research_area;
+    public void setSxResearchArea(String sxResearchArea) {
+        this.sxResearchArea = sxResearchArea;
     }
 
-    public String getSx_sci_resch_project() {
-        return sx_sci_resch_project;
+    public String getSxSciReschProject() {
+        return sxSciReschProject;
     }
 
-    public void setSx_sci_resch_project(String sx_sci_resch_project) {
-        this.sx_sci_resch_project = sx_sci_resch_project;
+    public void setSxSciReschProject(String sxSciReschProject) {
+        this.sxSciReschProject = sxSciReschProject;
     }
 
-    public String getSx_paper() {
-        return sx_paper;
+    public String getSxPaper() {
+        return sxPaper;
     }
 
-    public void setSx_paper(String sx_paper) {
-        this.sx_paper = sx_paper;
+    public void setSxPaper(String sxPaper) {
+        this.sxPaper = sxPaper;
     }
 
-    public String getSx_book() {
-        return sx_book;
+    public String getSxBook() {
+        return sxBook;
     }
 
-    public void setSx_book(String sx_book) {
-        this.sx_book = sx_book;
+    public void setSxBook(String sxBook) {
+        this.sxBook = sxBook;
     }
 
-    public String getSx_students() {
-        return sx_students;
+    public String getSxStudents() {
+        return sxStudents;
     }
 
-    public void setSx_students(String sx_students) {
-        this.sx_students = sx_students;
+    public void setSxStudents(String sxStudents) {
+        this.sxStudents = sxStudents;
     }
 
-    public Boolean getSx_is_visible() {
-        return sx_is_visible;
+    public Boolean getSxIsVisible() {
+        return sxIsVisible;
     }
 
-    public void setSx_is_visible(Boolean sx_is_visible) {
-        this.sx_is_visible = sx_is_visible;
+    public void setSxIsVisible(Boolean sxIsVisible) {
+        this.sxIsVisible = sxIsVisible;
     }
 }

@@ -1,7 +1,6 @@
 package xyz.ruankun.sxsicau.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -148,33 +147,41 @@ public class UserServiceImpl implements UserService {
         Teacher teacher = null;
         if (role == 0){
             // 绑定学生
-            student = studentRepository.findBySx_student_idAndSx_student_password(account, password);
+            student = studentRepository.findBySxStudentIdAndSxStudentPassword(account, password);
         }else{
             role = 1;
             // 绑定老师 role != 0
-            teacher = teacherRepository.findBySx_teacher_idAndSx_teacher_password(account, password);
+            teacher = teacherRepository.findBySxTeacherIdAndSxTeacherPassword(account, password);
         }
         if (student != null || teacher != null){
             //账号密码输入正确
             WxUser wxUser = wxUserRepository.findById(userId.intValue());
+            //判断是否已经绑定了
+            if (wxUser.getBindingNumber() != null){
+                map.put("ERROR", "已经绑定了学号:" + wxUser.getBindingNumber());
+                return map;
+            }
             if (wxUser != null){
                 wxUser.setBindingRole(role);
                 wxUser.setBindingNumber(account);
                 try {
                     wxUserRepository.saveAndFlush(wxUser);
                     map.put("SUCCESS", "绑定成功!");
+                    return map;
                 } catch (Exception e) {
                     e.printStackTrace();
                     map.put("ERROR", "绑定信息保存到数据库时发生错误");
+                    return map;
                 }
             }else {
                 map.put("ERROR", "找不到微信用户，ID是" + userId + ",请联系管理员验证是否存在");
+                return map;
             }
         }else{
             //账号密码输入错误
             map.put("ERROR", "用户名密码不匹配, 无法绑定!");
+            return map;
         }
-        return map;
     }
 
     @Override
@@ -253,17 +260,19 @@ public class UserServiceImpl implements UserService {
                 if (w.getId() > wxToken.getId())
                     wxToken = w;
             }
+            logger.info("找到最近的wxtoken为:" + wxToken.toString());
         }
-        //查看session是否过期
-        if (new Date().getTime() - wxToken.getModifiedTime().getTime() > LOGIN_VALID_TIME){
+        //查看session是否过期  // == 0是判断到底有没有token，0就是没有过token，是新注册的用户
+        if (wxToken.getId() == 0 || (new Date().getTime() - wxToken.getModifiedTime().getTime() > (long)LOGIN_VALID_TIME)){
             //登录已经过期了
+            System.out.println("当前时间戳相差" + (new Date().getTime() - wxToken.getModifiedTime().getTime()));
             WxToken wxToken1 = new WxToken();
             Date date = new Date();
             wxToken1.setCreateTime(date);
             wxToken1.setModifiedTime(date);
             wxToken1.setToken(MD5Util.md5(date.toString()));
             wxToken1.setIp("0.0.0.0");
-            wxToken1.setUserId(wxToken.getUserId());
+            wxToken1.setUserId(userId);
             wxToken1.setValidity(LOGIN_VALID_TIME);
             try {
                 return wxTokenRepository.save(wxToken1);
@@ -272,6 +281,7 @@ public class UserServiceImpl implements UserService {
                 logger.error("保存session到数据库时失败了");
             }
         }else {
+            System.out.println("meijinqu:" + (new Date().getTime() - wxToken.getModifiedTime().getTime()));
             //登录没有过期，刷新有效时间后返回
             wxToken.setModifiedTime(new Date());
             if (wxTokenRepository.saveAndFlush(wxToken) != null){

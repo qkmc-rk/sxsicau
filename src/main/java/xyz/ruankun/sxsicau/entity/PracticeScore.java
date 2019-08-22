@@ -16,74 +16,74 @@ public class PracticeScore {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "sx_id")
-    private Integer sx_id;
+    private Integer sxId;
 
     @Column(name = "sx_teacher_id")
-    private String sx_teacher_id;
+    private String sxTeacherId;
     @Column(name = "sx_practice_id")
-    private Integer sx_practice_id;
+    private Integer sxPracticeId;
     @Column(name = "sx_gtm_create")
-    private Date sx_gtm_create;
+    private Date sxGtmCreate;
     @Column(name = "sx_score")
-    private BigDecimal sx_score;
+    private BigDecimal sxScore;
     @Column(name = "sx_remark")
-    private String sx_remark;
+    private String sxRemark;
     @Column(name = "sx_gtm_modified")
-    private Date sx_gtm_modified;
+    private Date sxGtmModified;
 
-    public Integer getSx_id() {
-        return sx_id;
+    public Integer getSxId() {
+        return sxId;
     }
 
-    public void setSx_id(Integer sx_id) {
-        this.sx_id = sx_id;
+    public void setSxId(Integer sxId) {
+        this.sxId = sxId;
     }
 
-    public String getSx_teacher_id() {
-        return sx_teacher_id;
+    public String getSxTeacherId() {
+        return sxTeacherId;
     }
 
-    public void setSx_teacher_id(String sx_teacher_id) {
-        this.sx_teacher_id = sx_teacher_id;
+    public void setSxTeacherId(String sxTeacherId) {
+        this.sxTeacherId = sxTeacherId;
     }
 
-    public Integer getSx_practice_id() {
-        return sx_practice_id;
+    public Integer getSxPracticeId() {
+        return sxPracticeId;
     }
 
-    public void setSx_practice_id(Integer sx_practice_id) {
-        this.sx_practice_id = sx_practice_id;
+    public void setSxPracticeId(Integer sxPracticeId) {
+        this.sxPracticeId = sxPracticeId;
     }
 
-    public Date getSx_gtm_create() {
-        return sx_gtm_create;
+    public Date getSxGtmCreate() {
+        return sxGtmCreate;
     }
 
-    public void setSx_gtm_create(Date sx_gtm_create) {
-        this.sx_gtm_create = sx_gtm_create;
+    public void setSxGtmCreate(Date sxGtmCreate) {
+        this.sxGtmCreate = sxGtmCreate;
     }
 
-    public BigDecimal getSx_score() {
-        return sx_score;
+    public BigDecimal getSxScore() {
+        return sxScore;
     }
 
-    public void setSx_score(BigDecimal sx_score) {
-        this.sx_score = sx_score;
+    public void setSxScore(BigDecimal sxScore) {
+        this.sxScore = sxScore;
     }
 
-    public String getSx_remark() {
-        return sx_remark;
+    public String getSxRemark() {
+        return sxRemark;
     }
 
-    public void setSx_remark(String sx_remark) {
-        this.sx_remark = sx_remark;
+    public void setSxRemark(String sxRemark) {
+        this.sxRemark = sxRemark;
     }
 
-    public Date getSx_gtm_modified() {
-        return sx_gtm_modified;
+    public Date getSxGtmModified() {
+        return sxGtmModified;
     }
 
-    public void setSx_gtm_modified(Date sx_gtm_modified) {
-        this.sx_gtm_modified = sx_gtm_modified;
+    public void setSxGtmModified(Date sxGtmModified) {
+        this.sxGtmModified = sxGtmModified;
     }
 }

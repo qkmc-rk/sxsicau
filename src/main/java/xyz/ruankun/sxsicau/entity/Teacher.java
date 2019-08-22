@@ -14,133 +14,133 @@ public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "sx_id")
-    private Integer sx_id;
+    private Integer sxId;
     @Column(name = "sx_teacher_id")
-    private String sx_teacher_id;
+    private String sxTeacherId;
     @Column(name = "sx_teacher_name")
-    private String sx_teacher_name;
+    private String sxTeacherName;
     @Column(name = "sx_teacher_password")
-    private String sx_teacher_password;
+    private String sxTeacherPassword;
     @Column(name = "sx_college")
-    private String sx_college;
+    private String sxCollege;
     @Column(name = "sx_nation")
-    private String sx_nation;
+    private String sxNation;
     @Column(name = "sx_sex")
-    private String sx_sex;
+    private String sxSex;
     @Column(name = "sx_age")
-    private String sx_age;
+    private String sxAge;
     @Column(name = "sx_gtm_create")
-    private Date sx_gtm_create;
+    private Date sxGtmCreate;
     @Column(name = "sx_gtm_modified")
-    private Date sx_gtm_modified;
+    private Date sxGtmModified;
     @Column(name = "sx_is_lock")
-    private Boolean sx_is_lock;
+    private Boolean sxIsLock;
     @Column(name = "sx_tutor_up")
-    private Integer sx_tutor_up;    //最多能被多少学生选
+    private Integer sxTutorUp;    //最多能被多少学生选
     @Column(name = "sx_tutor")
-    private Integer sx_tutor;   //最多可以双向选择多少个学生
+    private Integer sxTutor;   //最多可以双向选择多少个学生
 
-    public Integer getSx_id() {
-        return sx_id;
+    public Integer getSxId() {
+        return sxId;
     }
 
-    public void setSx_id(Integer sx_id) {
-        this.sx_id = sx_id;
+    public void setSxId(Integer sxId) {
+        this.sxId = sxId;
     }
 
-    public String getSx_teacher_id() {
-        return sx_teacher_id;
+    public String getSxTeacherId() {
+        return sxTeacherId;
     }
 
-    public void setSx_teacher_id(String sx_teacher_id) {
-        this.sx_teacher_id = sx_teacher_id;
+    public void setSxTeacherId(String sxTeacherId) {
+        this.sxTeacherId = sxTeacherId;
     }
 
-    public String getSx_teacher_name() {
-        return sx_teacher_name;
+    public String getSxTeacherName() {
+        return sxTeacherName;
     }
 
-    public void setSx_teacher_name(String sx_teacher_name) {
-        this.sx_teacher_name = sx_teacher_name;
+    public void setSxTeacherName(String sxTeacherName) {
+        this.sxTeacherName = sxTeacherName;
     }
 
-    public String getSx_teacher_password() {
-        return sx_teacher_password;
+    public String getSxTeacherPassword() {
+        return sxTeacherPassword;
     }
 
-    public void setSx_teacher_password(String sx_teacher_password) {
-        this.sx_teacher_password = sx_teacher_password;
+    public void setSxTeacherPassword(String sxTeacherPassword) {
+        this.sxTeacherPassword = sxTeacherPassword;
     }
 
-    public String getSx_college() {
-        return sx_college;
+    public String getSxCollege() {
+        return sxCollege;
     }
 
-    public void setSx_college(String sx_college) {
-        this.sx_college = sx_college;
+    public void setSxCollege(String sxCollege) {
+        this.sxCollege = sxCollege;
     }
 
-    public String getSx_nation() {
-        return sx_nation;
+    public String getSxNation() {
+        return sxNation;
     }
 
-    public void setSx_nation(String sx_nation) {
-        this.sx_nation = sx_nation;
+    public void setSxNation(String sxNation) {
+        this.sxNation = sxNation;
     }
 
-    public String getSx_sex() {
-        return sx_sex;
+    public String getSxSex() {
+        return sxSex;
     }
 
-    public void setSx_sex(String sx_sex) {
-        this.sx_sex = sx_sex;
+    public void setSxSex(String sxSex) {
+        this.sxSex = sxSex;
     }
 
-    public String getSx_age() {
-        return sx_age;
+    public String getSxAge() {
+        return sxAge;
     }
 
-    public void setSx_age(String sx_age) {
-        this.sx_age = sx_age;
+    public void setSxAge(String sxAge) {
+        this.sxAge = sxAge;
     }
 
-    public Date getSx_gtm_create() {
-        return sx_gtm_create;
+    public Date getSxGtmCreate() {
+        return sxGtmCreate;
     }
 
-    public void setSx_gtm_create(Date sx_gtm_create) {
-        this.sx_gtm_create = sx_gtm_create;
+    public void setSxGtmCreate(Date sxGtmCreate) {
+        this.sxGtmCreate = sxGtmCreate;
     }
 
-    public Date getSx_gtm_modified() {
-        return sx_gtm_modified;
+    public Date getSxGtmModified() {
+        return sxGtmModified;
     }
 
-    public void setSx_gtm_modified(Date sx_gtm_modified) {
-        this.sx_gtm_modified = sx_gtm_modified;
+    public void setSxGtmModified(Date sxGtmModified) {
+        this.sxGtmModified = sxGtmModified;
     }
 
-    public Boolean getSx_is_lock() {
-        return sx_is_lock;
+    public Boolean getSxIsLock() {
+        return sxIsLock;
     }
 
-    public void setSx_is_lock(Boolean sx_is_lock) {
-        this.sx_is_lock = sx_is_lock;
+    public void setSxIsLock(Boolean sxIsLock) {
+        this.sxIsLock = sxIsLock;
     }
 
-    public Integer getSx_tutor_up() {
-        return sx_tutor_up;
+    public Integer getSxTutorUp() {
+        return sxTutorUp;
     }
 
-    public void setSx_tutor_up(Integer sx_tutor_up) {
-        this.sx_tutor_up = sx_tutor_up;
+    public void setSxTutorUp(Integer sxTutorUp) {
+        this.sxTutorUp = sxTutorUp;
     }
 
-    public Integer getSx_tutor() {
-        return sx_tutor;
+    public Integer getSxTutor() {
+        return sxTutor;
     }
 
-    public void setSx_tutor(Integer sx_tutor) {
-        this.sx_tutor = sx_tutor;
+    public void setSxTutor(Integer sxTutor) {
+        this.sxTutor = sxTutor;
     }
 }

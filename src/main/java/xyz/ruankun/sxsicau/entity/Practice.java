@@ -15,123 +15,123 @@ public class Practice {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "sx_id")
-    private Integer sx_id;
+    private Integer sxId;
     @Column(name = "sx_student_id")
-    private String sx_student_id;
+    private String sxStudentId;
     @Column(name = "sx_student_name")
-    private String sx_student_name;
+    private String sxStudentName;
     @Column(name = "sx_major")
-    private String sx_major;
+    private String sxMajor;
     @Column(name = "sx_title")
-    private String sx_title;
+    private String sxTitle;
     @Column(name = "sx_report")
-    private String sx_report;
+    private String sxReport;
     @Column(name = "sx_picture")
-    private String sx_picture;
+    private String sxPicture;
     @Column(name = "sx_video")
-    private String sx_video;
+    private String sxVideo;
     @Column(name = "sx_gtm_modified")
-    private Date sx_gtm_modified;
+    private Date sxGtmModified;
     @Column(name = "sx_gtm_create")
-    private Date sx_gtm_create;
+    private Date sxGtmCreate;
     @Column(name = "sx_praise")
-    private Integer sx_praise;
+    private Integer sxPraise;
     @Column(name = "sx_is_visible")
-    private Boolean sx_is_visible;
+    private Boolean sxIsVisible;
 
-    public Integer getSx_id() {
-        return sx_id;
+    public Integer getSxId() {
+        return sxId;
     }
 
-    public void setSx_id(Integer sx_id) {
-        this.sx_id = sx_id;
+    public void setSxId(Integer sxId) {
+        this.sxId = sxId;
     }
 
-    public String getSx_student_id() {
-        return sx_student_id;
+    public String getSxStudentId() {
+        return sxStudentId;
     }
 
-    public void setSx_student_id(String sx_student_id) {
-        this.sx_student_id = sx_student_id;
+    public void setSxStudentId(String sxStudentId) {
+        this.sxStudentId = sxStudentId;
     }
 
-    public String getSx_student_name() {
-        return sx_student_name;
+    public String getSxStudentName() {
+        return sxStudentName;
     }
 
-    public void setSx_student_name(String sx_student_name) {
-        this.sx_student_name = sx_student_name;
+    public void setSxStudentName(String sxStudentName) {
+        this.sxStudentName = sxStudentName;
     }
 
-    public String getSx_major() {
-        return sx_major;
+    public String getSxMajor() {
+        return sxMajor;
     }
 
-    public void setSx_major(String sx_major) {
-        this.sx_major = sx_major;
+    public void setSxMajor(String sxMajor) {
+        this.sxMajor = sxMajor;
     }
 
-    public String getSx_title() {
-        return sx_title;
+    public String getSxTitle() {
+        return sxTitle;
     }
 
-    public void setSx_title(String sx_title) {
-        this.sx_title = sx_title;
+    public void setSxTitle(String sxTitle) {
+        this.sxTitle = sxTitle;
     }
 
-    public String getSx_report() {
-        return sx_report;
+    public String getSxReport() {
+        return sxReport;
     }
 
-    public void setSx_report(String sx_report) {
-        this.sx_report = sx_report;
+    public void setSxReport(String sxReport) {
+        this.sxReport = sxReport;
     }
 
-    public String getSx_picture() {
-        return sx_picture;
+    public String getSxPicture() {
+        return sxPicture;
     }
 
-    public void setSx_picture(String sx_picture) {
-        this.sx_picture = sx_picture;
+    public void setSxPicture(String sxPicture) {
+        this.sxPicture = sxPicture;
     }
 
-    public String getSx_video() {
-        return sx_video;
+    public String getSxVideo() {
+        return sxVideo;
     }
 
-    public void setSx_video(String sx_video) {
-        this.sx_video = sx_video;
+    public void setSxVideo(String sxVideo) {
+        this.sxVideo = sxVideo;
     }
 
-    public Date getSx_gtm_modified() {
-        return sx_gtm_modified;
+    public Date getSxGtmModified() {
+        return sxGtmModified;
     }
 
-    public void setSx_gtm_modified(Date sx_gtm_modified) {
-        this.sx_gtm_modified = sx_gtm_modified;
+    public void setSxGtmModified(Date sxGtmModified) {
+        this.sxGtmModified = sxGtmModified;
     }
 
-    public Date getSx_gtm_create() {
-        return sx_gtm_create;
+    public Date getSxGtmCreate() {
+        return sxGtmCreate;
     }
 
-    public void setSx_gtm_create(Date sx_gtm_create) {
-        this.sx_gtm_create = sx_gtm_create;
+    public void setSxGtmCreate(Date sxGtmCreate) {
+        this.sxGtmCreate = sxGtmCreate;
     }
 
-    public Integer getSx_praise() {
-        return sx_praise;
+    public Integer getSxPraise() {
+        return sxPraise;
     }
 
-    public void setSx_praise(Integer sx_praise) {
-        this.sx_praise = sx_praise;
+    public void setSxPraise(Integer sxPraise) {
+        this.sxPraise = sxPraise;
     }
 
-    public Boolean getSx_is_visible() {
-        return sx_is_visible;
+    public Boolean getSxIsVisible() {
+        return sxIsVisible;
     }
 
-    public void setSx_is_visible(Boolean sx_is_visible) {
-        this.sx_is_visible = sx_is_visible;
+    public void setSxIsVisible(Boolean sxIsVisible) {
+        this.sxIsVisible = sxIsVisible;
     }
 }

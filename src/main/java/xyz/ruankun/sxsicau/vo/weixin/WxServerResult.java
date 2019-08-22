@@ -1,10 +1,12 @@
 package xyz.ruankun.sxsicau.vo.weixin;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * 当微信调用登录接口时，从微信服务器获取登录信息，将信息封装为一个对象。
  */
+@JsonIgnoreProperties(ignoreUnknown = true) // 该注解忽略该对象中没有的字段
 public class WxServerResult {
 
     @JsonProperty("session_key")

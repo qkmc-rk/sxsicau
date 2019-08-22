@@ -17,11 +17,11 @@ public class WxToken {
     private Integer id;
     @Column(name = "token")
     private String token;
-    @Column(name = "userId")
+    @Column(name = "userid")
     private Integer userId;
-    @Column(name = "createTime")
+    @Column(name = "create_time")
     private Date createTime;
-    @Column(name = "modifiedTime")
+    @Column(name = "modified_time")
     private Date modifiedTime;
     @Column(name = "validity")
     private Integer validity;
@@ -93,5 +93,19 @@ public class WxToken {
 
     public void setIp(String ip) {
         this.ip = ip;
+    }
+
+    @Override
+    public String toString() {
+        return "WxToken{" +
+                "id=" + id +
+                ", token='" + token + '\'' +
+                ", userId=" + userId +
+                ", createTime=" + createTime +
+                ", modifiedTime=" + modifiedTime +
+                ", validity=" + validity +
+                ", ip='" + ip + '\'' +
+                ", isBinded=" + isBinded +
+                '}';
     }
 }
