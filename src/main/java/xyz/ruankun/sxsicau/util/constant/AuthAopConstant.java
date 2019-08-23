@@ -1,10 +1,11 @@
 package xyz.ruankun.sxsicau.util.constant;
 
-public enum  AuthAopConstant {
+public enum AuthAopConstant {
     /**
-     * 管理员 普通用户 匿名者
+     * 老师 学生 匿名者
      */
-    ADMIN,
-    USER,
+    TEACHER,
+    STUDENT,
+    BOTH,
     ANON
 }

@@ -63,15 +63,7 @@ public interface Constant {
 
     Integer AUTH_ERROR = 403;
 
-    //product 操作
-    Integer PRODUCT_ERROR = -1;
-    Integer PRODUCT_SUCCESS = 1;
-
-    //字符转换操作
-    Integer FORMAT_SUCCESS = 1;
-    Integer FORMAT_ERROR = -1;
-
-    //单次交易最多能使用多少积分
-    Integer MAX_CREDIT = 100;
+    Integer TEACHER = 1;
+    Integer STUDENT = 0;
 
 }

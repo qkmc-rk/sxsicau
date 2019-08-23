@@ -3,10 +3,12 @@ package xyz.ruankun.sxsicau.controller;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import xyz.ruankun.sxsicau.annotation.Authentication;
 import xyz.ruankun.sxsicau.entity.WxToken;
 import xyz.ruankun.sxsicau.entity.WxUser;
 import xyz.ruankun.sxsicau.service.UserService;
 import xyz.ruankun.sxsicau.util.Constant;
+import xyz.ruankun.sxsicau.util.constant.AuthAopConstant;
 import xyz.ruankun.sxsicau.vo.ResponseEntity;
 
 import java.util.Date;
@@ -101,12 +103,14 @@ public class WxUserController {
 
     /**
      *  绑定用户的学号/教职工号和密码
+     *
      * @param account
      * @param role
      * @param password
      * @return
      */
     @PostMapping("/binding")
+    @Authentication(role = AuthAopConstant.BOTH)
     @ApiOperation(value = "绑定用户的信息💞, 绑定用户的学号/教职工号和密码")
     public ResponseEntity binding(@RequestHeader String token, @RequestParam String account,@RequestParam(required = false) Integer role,@RequestParam String password){
         WxToken wxToken = userService.getWxTokenByToken(token);

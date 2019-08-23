@@ -50,4 +50,11 @@ public interface UserService {
 
 
     WxToken getWxTokenByToken(String token);
+
+    /**
+     * 用于更新用户的token信息
+     * @param userId
+     * @return
+     */
+    WxToken updateUserToken(Integer userId);
 }

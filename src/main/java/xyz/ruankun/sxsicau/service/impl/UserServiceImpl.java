@@ -196,6 +196,20 @@ public class UserServiceImpl implements UserService {
         return wxToken;
     }
 
+    @Override
+    public WxToken updateUserToken(Integer userId) {
+        try {
+            WxToken wxToken1 = updateToken(userId);
+            if (wxToken1 != null)
+                return wxToken1;
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error("更新用户的token时出现异常");
+            return null;
+        }
+        return null;
+    }
+
 
     /**
      * 封装了请求微信服务端的代码，传入code，请求后，将结果封装成为一个WxServerResult对象返回

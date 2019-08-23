@@ -114,4 +114,17 @@ public class WxUser {
 
     }
 
+    @Override
+    public String toString() {
+        return "WxUser{" +
+                "id=" + id +
+                ", openId='" + openId + '\'' +
+                ", wxNumber='" + wxNumber + '\'' +
+                ", isBlack=" + isBlack +
+                ", gmtCreate=" + gmtCreate +
+                ", gmtModified=" + gmtModified +
+                ", bindingNumber='" + bindingNumber + '\'' +
+                ", bindingRole=" + bindingRole +
+                '}';
+    }
 }
