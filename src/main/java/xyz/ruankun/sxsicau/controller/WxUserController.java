@@ -113,7 +113,7 @@ public class WxUserController {
     @Authentication(role = AuthAopConstant.BOTH)
     @ApiOperation(value = "绑定用户的信息💞, 绑定用户的学号/教职工号和密码")
     public ResponseEntity binding(@RequestHeader String token, @RequestParam String account,@RequestParam(required = false) Integer role,@RequestParam String password){
-        WxToken wxToken = userService.getWxTokenByToken(token);
+        WxToken wxToken = userService.gotWxTokenByToken(token);
         Integer userId = wxToken.getUserId();
         if (role == null){
             role = 0;   // 默认绑定的为学生身份

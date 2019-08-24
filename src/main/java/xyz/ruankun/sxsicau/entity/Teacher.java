@@ -143,4 +143,23 @@ public class Teacher {
     public void setSxTutor(Integer sxTutor) {
         this.sxTutor = sxTutor;
     }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "sxId=" + sxId +
+                ", sxTeacherId='" + sxTeacherId + '\'' +
+                ", sxTeacherName='" + sxTeacherName + '\'' +
+                ", sxTeacherPassword='" + sxTeacherPassword + '\'' +
+                ", sxCollege='" + sxCollege + '\'' +
+                ", sxNation='" + sxNation + '\'' +
+                ", sxSex='" + sxSex + '\'' +
+                ", sxAge='" + sxAge + '\'' +
+                ", sxGtmCreate=" + sxGtmCreate +
+                ", sxGtmModified=" + sxGtmModified +
+                ", sxIsLock=" + sxIsLock +
+                ", sxTutorUp=" + sxTutorUp +
+                ", sxTutor=" + sxTutor +
+                '}';
+    }
 }

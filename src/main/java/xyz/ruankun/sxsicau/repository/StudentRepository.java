@@ -13,4 +13,6 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
      * @return
      */
     Student findBySxStudentIdAndSxStudentPassword(String sxStudentId, String sxStudentPassword);
+
+    Student findBySxStudentId(String studentId);
 }

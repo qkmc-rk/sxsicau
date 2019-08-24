@@ -49,7 +49,7 @@ public class AuthenticationAspect {
         String token = request.getHeader("token");
         WxToken wxToken = null;
         if (token != null)
-            wxToken = userService.getWxTokenByToken(token);
+            wxToken = userService.gotWxTokenByToken(token);
         if (wxToken != null && wxToken.getUserId() != null){
             if (userService.updateUserToken(wxToken.getUserId()) != null)
                 logger.info("刷新缓存成功");
@@ -82,7 +82,9 @@ public class AuthenticationAspect {
             if (realRole == role || role == AuthAopConstant.BOTH) {
                 //权限正确，去访问吧
                 try {
-                    return proceedingJoinPoint.proceed();
+                     Object obj = proceedingJoinPoint.proceed();
+                     logger.info("执行的返回值是：" + obj.toString());
+                     return obj;
                 } catch (Throwable throwable) {
                     throwable.printStackTrace();
                     ResponseEntity responseEntity = new ResponseEntity();
@@ -116,9 +118,10 @@ public class AuthenticationAspect {
      * @return
      */
     private AuthAopConstant authenticate(String token, String path) {
-        WxToken wxToken = userService.getWxTokenByToken(token);
+        WxToken wxToken = userService.gotWxTokenByToken(token);
         if (wxToken == null ||  wxToken.getUserId() == null || wxToken.getUserId() == 0){
             //显然这个token是假的
+            logger.error("token已经过期或者token不存在:" + token + ",wxToken:" + wxToken);
             return AuthAopConstant.ANON;
         }
         //是有身份的人了

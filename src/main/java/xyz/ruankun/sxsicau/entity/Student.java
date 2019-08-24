@@ -183,4 +183,27 @@ public class Student {
     public void setSxTotorUp(Integer sxTotorUp) {
         this.sxTotorUp = sxTotorUp;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "sxId=" + sxId +
+                ", sxStudentId='" + sxStudentId + '\'' +
+                ", sxStudentName='" + sxStudentName + '\'' +
+                ", sxStudentPhone='" + sxStudentPhone + '\'' +
+                ", sxStudentPassword='" + sxStudentPassword + '\'' +
+                ", sxSex='" + sxSex + '\'' +
+                ", sxNation='" + sxNation + '\'' +
+                ", sxGrade='" + sxGrade + '\'' +
+                ", sxCollege='" + sxCollege + '\'' +
+                ", sxMajor='" + sxMajor + '\'' +
+                ", sxClazz='" + sxClazz + '\'' +
+                ", sxCampus='" + sxCampus + '\'' +
+                ", sxPicture='" + sxPicture + '\'' +
+                ", sxIsLock=" + sxIsLock +
+                ", sxGtmCreate=" + sxGtmCreate +
+                ", sxGtmModified=" + sxGtmModified +
+                ", sxTotorUp=" + sxTotorUp +
+                '}';
+    }
 }

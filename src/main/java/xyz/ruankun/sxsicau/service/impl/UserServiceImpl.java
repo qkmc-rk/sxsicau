@@ -185,14 +185,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public WxToken getWxTokenByToken(String token) {
-        WxToken wxToken = null;
+    public WxToken gotWxTokenByToken(String token) {
+        WxToken wxToken;
         try {
             wxToken = wxTokenRepository.findByToken(token);
+            logger.info("gotWxTokenByToken：获取token成功：" + wxToken.toString());
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
+        if (wxToken != null && (wxToken.getModifiedTime().getTime() - new Date().getTime()) > LOGIN_VALID_TIME){
+            logger.error("wxToken已经过期了" + wxToken.toString());
+            return null;
+        }
+        logger.info("返回wxToken:" + wxToken.toString());
         return wxToken;
     }
 
@@ -295,7 +301,7 @@ public class UserServiceImpl implements UserService {
                 logger.error("保存session到数据库时失败了");
             }
         }else {
-            System.out.println("meijinqu:" + (new Date().getTime() - wxToken.getModifiedTime().getTime()));
+            logger.info("private WxToken updateToken(Integer userId): token没有过期，需要刷新:" + (new Date().getTime() - wxToken.getModifiedTime().getTime()));
             //登录没有过期，刷新有效时间后返回
             wxToken.setModifiedTime(new Date());
             if (wxTokenRepository.saveAndFlush(wxToken) != null){

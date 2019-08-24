@@ -6,7 +6,9 @@ import xyz.ruankun.sxsicau.entity.WxUser;
 import java.util.Map;
 
 /**
- * 微信小程序用户登录注册等功能
+ * 该服务模块提供：
+ *  微信小程序用户登录注册等功能,不提供学生教师等信息的相关操作
+ *  学生教师相关操作请参考UserInfoService
  */
 public interface UserService {
 
@@ -49,7 +51,13 @@ public interface UserService {
     Map<String, String> bindingUser(Integer userId, Integer role, String account, String password);
 
 
-    WxToken getWxTokenByToken(String token);
+    /**
+     * 获取用户的token信息
+     * 如果token不存在或者过期的话会返回null
+     * @param token
+     * @return wxToken 实体
+     */
+    WxToken gotWxTokenByToken(String token);
 
     /**
      * 用于更新用户的token信息
