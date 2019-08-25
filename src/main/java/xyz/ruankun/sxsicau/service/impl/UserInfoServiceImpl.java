@@ -4,14 +4,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import xyz.ruankun.sxsicau.entity.Resume;
 import xyz.ruankun.sxsicau.entity.Student;
 import xyz.ruankun.sxsicau.entity.Teacher;
-import xyz.ruankun.sxsicau.repository.StudentRepository;
-import xyz.ruankun.sxsicau.repository.TeacherRepository;
-import xyz.ruankun.sxsicau.repository.WxTokenRepository;
-import xyz.ruankun.sxsicau.repository.WxUserRepository;
+import xyz.ruankun.sxsicau.repository.*;
 import xyz.ruankun.sxsicau.service.UserInfoService;
+import xyz.ruankun.sxsicau.util.EntityUtil;
 
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -31,6 +32,8 @@ public class UserInfoServiceImpl implements UserInfoService {
     WxUserRepository wxUserRepository;
     @Autowired
     WxTokenRepository wxTokenRepository;
+    @Autowired
+    ResumeRepository resumeRepository;
 
     @Override
     public Student findStudentInfo(Integer studentId) {
@@ -128,6 +131,112 @@ public class UserInfoServiceImpl implements UserInfoService {
         } catch (Exception e) {
             e.printStackTrace();
             logger.error("更新教师信息失败：" + teacher.toString());
+            return null;
+        }
+    }
+
+    @Override
+    public List<Resume> getResumeList() {
+        List<Resume> rs;
+        try {
+            rs = resumeRepository.findAll();
+            return rs;
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error("数据库获取或有简历信息时失败了！");
+            return null;
+        }
+    }
+
+    @Override
+    public Resume getOneResume(String teacherNumber) {
+        if (teacherNumber == null){
+            logger.error("传入的teacherNumber为空");
+            return null;
+        }
+        Resume resume;
+        try {
+            resume = resumeRepository.findBySxTeacherId(teacherNumber);
+            return resume;
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error("通过工号查询简历时失败,工号是：" + teacherNumber);
+            return null;
+        }
+
+    }
+
+    @Override
+    public Resume getOneResume(Integer resumeId) {
+        if (resumeId == null){
+            logger.error("传入的resumeId为空");
+            return null;
+        }
+        Resume resume;
+        try {
+            resume = resumeRepository.findBySxId(resumeId.intValue());
+            return resume;
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error("通过ID查询简历时失败,ID是：" + resumeId);
+            return null;
+        }
+    }
+
+    @Override
+    public Resume updateResume(Resume resume) {
+        if (resume == null){
+          logger.error("传入的resume为空，无法完成更新操作");
+            return null;
+        }
+        if (resume != null && resume.getSxId() == null){
+            logger.error("简历信息的ID为空,无法完成更新操作,传入的对象是" + resume.toString());
+        }
+
+        Resume resOld = resumeRepository.findBySxId(resume.getSxId());
+        if (resOld == null){
+            logger.error("没有找到简历信息，请放弃,ID是" + resume.getSxId());
+            return null;
+        }
+        resume.setSxGtmCreate(null);
+        resume.setSxIsVisible(null);
+        resume.setSxGtmModified(new Date());
+        EntityUtil.update(resume,resOld);
+
+        try {
+            return resumeRepository.saveAndFlush(resume);
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error("尝试保存简历时失败,保存的对象是：" + resume.toString());
+            return null;
+        }
+
+    }
+
+    @Override
+    public Resume deleteResume(Integer resumeId) {
+        try {
+            Resume resume = resumeRepository.findById(resumeId).get();
+            resumeRepository.deleteById(resumeId);
+            return resume;
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error("deleteResume遇到错误信息！ID是 " + resumeId);
+            return null;
+        }
+    }
+
+    @Override
+    public Resume saveOneResume(Resume resume) {
+        if (resume == null || resume.getSxId() != null){
+            logger.error("这样的简历无法更新,要么是空，要么有ID：" + resume.toString());
+            return null;
+        }
+        try {
+            return resumeRepository.save(resume);
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error("保存简历失败,简历信息：" + resume.toString());
             return null;
         }
     }

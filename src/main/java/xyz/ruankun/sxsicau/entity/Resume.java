@@ -264,4 +264,35 @@ public class Resume {
     public void setSxIsVisible(Boolean sxIsVisible) {
         this.sxIsVisible = sxIsVisible;
     }
+
+    @Override
+    public String toString() {
+        return "Resume{" +
+                "sxId=" + sxId +
+                ", sxTeacherId='" + sxTeacherId + '\'' +
+                ", sxPicture='" + sxPicture + '\'' +
+                ", sxGtmModified=" + sxGtmModified +
+                ", sxGtmCreate=" + sxGtmCreate +
+                ", sxName='" + sxName + '\'' +
+                ", sxSex='" + sxSex + '\'' +
+                ", sxBirth='" + sxBirth + '\'' +
+                ", sxType='" + sxType + '\'' +
+                ", sxUnit='" + sxUnit + '\'' +
+                ", sxAdmin='" + sxAdmin + '\'' +
+                ", sxAdminPhone='" + sxAdminPhone + '\'' +
+                ", sxTechMajor='" + sxTechMajor + '\'' +
+                ", sxEmail='" + sxEmail + '\'' +
+                ", sxIntroduce='" + sxIntroduce + '\'' +
+                ", sxWorkExp='" + sxWorkExp + '\'' +
+                ", sxEduExp='" + sxEduExp + '\'' +
+                ", sxAward='" + sxAward + '\'' +
+                ", sxOtherStatus='" + sxOtherStatus + '\'' +
+                ", sxResearchArea='" + sxResearchArea + '\'' +
+                ", sxSciReschProject='" + sxSciReschProject + '\'' +
+                ", sxPaper='" + sxPaper + '\'' +
+                ", sxBook='" + sxBook + '\'' +
+                ", sxStudents='" + sxStudents + '\'' +
+                ", sxIsVisible=" + sxIsVisible +
+                '}';
+    }
 }

@@ -37,7 +37,6 @@ public class AuthenticationAspect {
     @Pointcut(value = "@annotation(xyz.ruankun.sxsicau.annotation.Authentication)")
     public void pointcut() {}
 
-
     /**
      * 与被注释方法正确返回之后执行
      */
