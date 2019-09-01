@@ -43,7 +43,7 @@ public class UserInfoController {
     @Authentication(role = AuthAopConstant.BOTH)
     public ResponseEntity studentOrTeacherInfo(@RequestHeader String token){
 
-        Map<String, Object> map = youGetUserByToken(token);
+        Map<String, Object> map = new ControllerUtil().youGetUserByToken(token);
         if (map.get("ERROR") != null){
             return ControllerUtil.getFalseResultMsgBySelf((String) map.get("ERROR"));
         }
@@ -90,7 +90,7 @@ public class UserInfoController {
             return ControllerUtil.getFalseResultMsgBySelf("teacher和student对象不能同时为空");
         }
 
-        Map<String, Object> map = youGetUserByToken(token);
+        Map<String, Object> map = new ControllerUtil().youGetUserByToken(token);
         if (map.get("ERROR") != null){
             return ControllerUtil.getFalseResultMsgBySelf((String) map.get("ERROR"));
         }
@@ -144,36 +144,6 @@ public class UserInfoController {
         }
 
 
-    }
-
-    /**
-     * 封装让代码看起来不是屎
-     * @param token 令牌信息
-     * @return 返回🔨
-     */
-    public Map<String, Object> youGetUserByToken(String token){
-        HashMap<String, Object> map = new HashMap<>();
-        if (token == null){
-            map.put("ERROR", "token不能为空");
-            return map;
-        }
-        WxToken wxToken = userService.gotWxTokenByToken(token);
-        if (wxToken == null){
-            map.put("ERROR","token信息查不到或者token已经过期");
-            return map;
-        }
-        Integer userId = wxToken.getUserId();
-        if (userId == null){
-            map.put("ERROR","wxToken对象有误，查不到userId信息: " + wxToken.toString());
-            return map;
-        }
-        WxUser wxUser = userService.getUser(userId);
-        if (wxUser == null){
-            map.put("ERROR","该userId是错误的值对象，数据库查不到该ID的user：" + userId);
-            return map;
-        }
-        map.put("SUCCESS", wxUser);
-        return map;
     }
 
 }

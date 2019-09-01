@@ -3,6 +3,9 @@ package xyz.ruankun.sxsicau.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import xyz.ruankun.sxsicau.entity.Student;
 
+import java.util.Iterator;
+import java.util.List;
+
 public interface StudentRepository extends JpaRepository<Student, Integer> {
 
     /**
@@ -15,4 +18,6 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
     Student findBySxStudentIdAndSxStudentPassword(String sxStudentId, String sxStudentPassword);
 
     Student findBySxStudentId(String studentId);
+
+    List<Student> findAllBySxStudentId(Iterator<String> stuIds);
 }

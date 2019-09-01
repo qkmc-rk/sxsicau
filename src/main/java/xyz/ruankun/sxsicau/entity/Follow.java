@@ -72,6 +72,19 @@ public class Follow {
     }
 
     public void setSxExtIsFollowing(Boolean sxExtIsFollowing) {
+
         this.sxExtIsFollowing = sxExtIsFollowing;
+    }
+
+    @Override
+    public String toString() {
+        return "Follow{" +
+                "sxExtId=" + sxExtId +
+                ", sxExtStudentId='" + sxExtStudentId + '\'' +
+                ", sxExtFolloweeId='" + sxExtFolloweeId + '\'' +
+                ", sxExtGmtCreate=" + sxExtGmtCreate +
+                ", sxExtGmtModified=" + sxExtGmtModified +
+                ", sxExtIsFollowing=" + sxExtIsFollowing +
+                '}';
     }
 }

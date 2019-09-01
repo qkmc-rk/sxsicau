@@ -1,10 +1,13 @@
 package xyz.ruankun.sxsicau.service;
 
+import xyz.ruankun.sxsicau.entity.Practice;
 import xyz.ruankun.sxsicau.entity.Resume;
 import xyz.ruankun.sxsicau.entity.Student;
 import xyz.ruankun.sxsicau.entity.Teacher;
+import xyz.ruankun.sxsicau.vo.fvo.FollowStudentVO;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 该服务提供：
@@ -91,4 +94,37 @@ public interface UserInfoService {
      * @return
      */
     Resume saveOneResume(Resume resume);
+
+    /**
+     * 关注你的他(她)
+     * @param sxStudentId 你关注的学生的学号
+     * @param wxUserId 你的微信账号ID
+     * @return
+     */
+    Map<String, Object> followHer0rHim(String sxStudentId, Integer wxUserId);
+
+    /**
+     *  取消关注
+     * @param sxStudentId 你关注的学生的学号
+     * @param wxUserId 你的微信账号ID
+     * @return map\<String, Object[String/Follow]\>
+     */
+    Map<String, Object> cancelFollow(String sxStudentId, Integer wxUserId);
+
+    /**
+     *  获取我关注的用户(学生)的信息
+     *
+     * @param wxUserId
+     * @return
+     */
+    Map<String, Object> getMyAttention(Integer wxUserId);
+
+    /**
+     * 为他插上梦想的翅膀
+     * @param success 关注的人的列表
+     * @return 带着实习信息的关注的人的列表
+     */
+    List<FollowStudentVO> getPractices(List<FollowStudentVO> success);
+
+    List<Practice> findPracticesOfHerOrHim(Integer wxUserId, String sxStudentId);
 }

@@ -1,19 +1,15 @@
 package xyz.ruankun.sxsicau.service.impl;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import xyz.ruankun.sxsicau.entity.Resume;
-import xyz.ruankun.sxsicau.entity.Student;
-import xyz.ruankun.sxsicau.entity.Teacher;
+import xyz.ruankun.sxsicau.entity.*;
 import xyz.ruankun.sxsicau.repository.*;
 import xyz.ruankun.sxsicau.service.UserInfoService;
 import xyz.ruankun.sxsicau.util.EntityUtil;
+import xyz.ruankun.sxsicau.vo.fvo.FollowStudentVO;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  *  详细信息请参照 interface UserInfoService
@@ -34,6 +30,10 @@ public class UserInfoServiceImpl implements UserInfoService {
     WxTokenRepository wxTokenRepository;
     @Autowired
     ResumeRepository resumeRepository;
+    @Autowired
+    FollowRepository followRepository;
+    @Autowired
+    PracticeRepository practiceRepository;
 
     @Override
     public Student findStudentInfo(Integer studentId) {
@@ -238,6 +238,122 @@ public class UserInfoServiceImpl implements UserInfoService {
             e.printStackTrace();
             logger.error("保存简历失败,简历信息：" + resume.toString());
             return null;
+        }
+    }
+
+    @Override
+    public Map<String, Object> followHer0rHim(String sxStudentId, Integer wxUserId) {
+        Map<String, Object> map = new HashMap<>();
+        if (sxStudentId == null || wxUserId == null){
+            map.put("ERROR", " 不能为空,sxStudentId:" + sxStudentId + ", wxUserId:" + wxUserId);
+            return map;
+
+        }
+        Follow follow = null;
+        String wxUserIdStr = String.valueOf(wxUserId);
+        // 先验证之前是否关注
+        if ((follow = followRepository.findBySxExtStudentIdAndSxExtFolloweeId(sxStudentId, wxUserIdStr)) != null){
+            //之前关注过
+            follow.setSxExtIsFollowing(true);
+            map.put("SUCCESS",followRepository.saveAndFlush(follow));
+            return map;
+
+        }
+        // 之前未关注
+        follow = new Follow();
+        follow.setSxExtFolloweeId(wxUserIdStr);
+        follow.setSxExtGmtCreate(new Date());
+        follow.setSxExtGmtModified(new Date());
+        follow.setSxExtIsFollowing(true);
+        follow.setSxExtStudentId(sxStudentId);
+        try {
+            follow = followRepository.save(follow);
+            map.put("SUCCESS", follow);
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error("保存失败,无法保存follow:" + follow.toString());
+            map.put("ERROR", "保存失败,无法保存follow:" + follow.toString());
+        }
+        return map;
+    }
+
+    @Override
+    public Map<String, Object> cancelFollow(String sxStudentId, Integer wxUserId) {
+        Map<String, Object> map = new HashMap<>();
+        Follow follow = null;
+        if (sxStudentId == null || wxUserId == null){
+            map.put("ERROR", " 不能为空,sxStudentId:" + sxStudentId + ", wxUserId:" + wxUserId);
+            return map;
+        }
+        try {
+            follow = followRepository.findBySxExtStudentIdAndSxExtFolloweeId(sxStudentId, String.valueOf(wxUserId));
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error("找不到follow,学号:" + sxStudentId + ", wxUserId:" + wxUserId);
+            map.put("ERROR", "找不到follow,学号:" + sxStudentId + ", wxUserId:" + wxUserId);
+            return map;
+        }
+        follow.setSxExtIsFollowing(false);
+        map.put("SUCCESS", followRepository.saveAndFlush(follow));
+        return map;
+    }
+
+    @Override
+    public Map<String, Object> getMyAttention(Integer wxUserId) {
+        Map<String, Object> map = new HashMap<>();
+        List<Follow> rs;
+        try {
+            rs = followRepository.findAllBySxExtFolloweeId(String.valueOf(wxUserId));
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error("错误，按照此ID查询出错了:" + wxUserId);
+            map.put("ERROR", "错误，按照此ID查询出错了:" + wxUserId);
+            return map;
+        }
+        //拿到了follow list,还要去拿学生的信息列表
+        List<FollowStudentVO> students = new ArrayList<>();
+        for (Follow f:
+             rs) {
+            try {
+                students.add(new FollowStudentVO(studentRepository.findBySxStudentId(f.getSxExtStudentId())));
+            } catch (Exception e) {
+                e.printStackTrace();
+                logger.error("循环查找students时出现问题,f:" + f.toString());
+                map.put("ERROR", "循环查找students时出现问题,f:" + f.toString());
+                return map;
+            }
+        }
+        map.put("SUCCESS", students);
+        return map;
+
+    }
+
+    @Override
+    public List<FollowStudentVO> getPractices(List<FollowStudentVO> success) {
+        for (FollowStudentVO f :
+                success) {
+            List<Practice> practices = practiceRepository.findAllBySxStudentId(f.getSxStudentId());
+            List<Practice> practices2 = new ArrayList<>();
+            // 需要过滤掉is Visible == false的内容
+            for (Practice p :
+                    practices) {
+                if (p.getSxIsVisible() != false)
+                    practices2.add(p);
+            }
+            f.setPractices(practices2);
+        }
+        return success;
+    }
+
+    @Override
+    public List<Practice> findPracticesOfHerOrHim(Integer wxUserId, String sxStudentId) {
+        Follow follow = followRepository.findBySxExtStudentIdAndSxExtFolloweeId(sxStudentId, String.valueOf(wxUserId));
+        if (follow == null || follow.getSxExtIsFollowing() == false) {
+            // 没有这个关注
+            logger.info("没有这个关注");
+            return null;
+        } else {
+            return practiceRepository.findAllBySxStudentId(sxStudentId);
         }
     }
 }
