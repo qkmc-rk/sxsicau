@@ -1,6 +1,8 @@
 package xyz.ruankun.sxsicau.controller;
 
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import xyz.ruankun.sxsicau.vo.ResponseEntity;
 
 /**
  * 该controller是一个匿名可访问的controller, 主要职责：
@@ -14,6 +16,16 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
+@RequestMapping("/public")
 public class AnonymityController {
+
+    /**
+     *  根据导师姓名或者工号就可以查询教师的简历信息
+     */
+    private String resume = "请参考ResumeController中的根据教师的职工号获取教师简历信息";
+
+    /**
+     *  返回导师列表
+     */
 
 }
