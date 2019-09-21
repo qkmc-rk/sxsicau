@@ -2,7 +2,6 @@ package xyz.ruankun.sxsicau.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import xyz.ruankun.sxsicau.vo.ResponseEntity;
 
 /**
  * 该controller是一个匿名可访问的controller, 主要职责：

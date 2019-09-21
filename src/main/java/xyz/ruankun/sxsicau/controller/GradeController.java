@@ -3,7 +3,6 @@ package xyz.ruankun.sxsicau.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import xyz.ruankun.sxsicau.annotation.Authentication;
 import xyz.ruankun.sxsicau.service.GradeService;
@@ -31,7 +30,6 @@ import xyz.ruankun.sxsicau.vo.fvo.ScoreVO;
  *      4.2 修改某个学生某次实习的分数
  */
 @RestController
-@RequestMapping("/grade")
 public class GradeController{
 
     @Autowired
@@ -40,9 +38,9 @@ public class GradeController{
     /**
      * 学生查询自己的成绩
      * @param token
-     * @return
+     * @return 学生自己的成绩，包括所有实习的成绩，总成绩等。
      */
-    @GetMapping("")
+    @GetMapping("/grades")
     @Authentication(role = AuthAopConstant.STUDENT)
     public ResponseEntity seekOwnGrade(@RequestHeader String token){
         Integer wxUserId = new ControllerUtil().getWxUserId(token);
@@ -53,6 +51,17 @@ public class GradeController{
             return ControllerUtil.getFalseResultMsgBySelf("没有找到成绩信息，详细信息请查看后台错误日志");
         }
     }
-    public ResponseEntity
+
+    /**
+     *  教师查询自己学生的成绩
+     * @param token
+     * @return 2.3 教师的所有学生的所有成绩
+     */
+    @GetMapping("/students/grades")
+    @Deprecated
+    public ResponseEntity seekMyStudentsGrade(@RequestHeader String token){
+
+        return null;
+    }
 
 }

@@ -14,6 +14,7 @@ import xyz.ruankun.sxsicau.vo.fvo.ScoreVO;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class GradeServiceImpl implements GradeService {
@@ -64,6 +65,16 @@ public class GradeServiceImpl implements GradeService {
         scoreVO.setPracticeScore(practiceScores);
         scoreVO.setTotalScore(totalScore);
         return scoreVO;
+    }
+
+
+    /**
+     * 该方法可以获取所有学生的成绩信息，然后后面根据条件在结果中筛选即可
+     * 虽然效率有点慢，但是方便啊
+     * @return 学生所有的成绩
+     */
+    private Map<String, Object> getAllStudentScore(){
+
     }
 
 }
