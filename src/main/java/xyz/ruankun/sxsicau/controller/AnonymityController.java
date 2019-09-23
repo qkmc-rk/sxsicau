@@ -1,14 +1,21 @@
 package xyz.ruankun.sxsicau.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import xyz.ruankun.sxsicau.entity.Teacher;
+import xyz.ruankun.sxsicau.service.UserInfoService;
+import xyz.ruankun.sxsicau.vo.ResponseEntity;
+import xyz.ruankun.sxsicau.vo.fvo.CorporationVO;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 该controller是一个匿名可访问的controller, 主要职责：
  *  1. 导师信息查询,根据导师姓名或者工号就可以查询教师的简历信息
  *  2. 导师信息查询,返回导师列表,返回所有专业的导师信息,前端自由过滤
  *  3. 企业信息查询,输入企业名字,就能查找到一部分企业的列表信息
- *  4. 企业信息查询, 根据企业的三要素,查询企业的详细信息
+ *  4. 企业信息查询, 根据企业的三要素,查询企业的详细信息(暂时不做，不提供)
  *  5. 主页banner信息查询,返回banner信息列表
  *  6. 主页banner信息查询,根据bannerId返回banner代表的相信静态页面信息
  *  7. 查询推荐的实习报告
@@ -18,6 +25,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/public")
 public class AnonymityController {
 
+    @Autowired
+    UserInfoService userInfoService;
+
     /**
      *  根据导师姓名或者工号就可以查询教师的简历信息
      */
@@ -26,5 +36,33 @@ public class AnonymityController {
     /**
      *  返回导师列表
      */
+    @GetMapping("/teachers")
+    public ResponseEntity getTeacherList(){
+        List<Teacher> teachers = userInfoService.findAllTeachers();
+        if (teachers == null){
+            return ControllerUtil.getFalseResultMsgBySelf("没有找到导师数据，或者查询过程抛出了异常，请见log");
+        }else {
+            return ControllerUtil.getDataResult(teachers);
+        }
+    }
+
+    /**
+     *  根据企业的模糊名字查询企业，返回一个企业列表。
+     * @param fuzzyName 企业的模糊名字
+     * @return
+     */
+    @GetMapping("/corporation/{fuzzyName}")
+    @Deprecated
+    public ResponseEntity findCorpListByName(@PathVariable String fuzzyName){
+        CorporationVO corporationVO = new CorporationVO();
+        corporationVO.setName(fuzzyName);
+        List<CorporationVO> ans = new ArrayList<>();
+        ans.add(corporationVO);
+        corporationVO = new CorporationVO();corporationVO.setName("其它公司");
+        ans.add(corporationVO);
+        return ControllerUtil.getDataResult(ans);
+    }
+
+
 
 }

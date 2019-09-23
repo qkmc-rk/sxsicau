@@ -56,6 +56,8 @@ public interface UserInfoService {
      */
     Teacher findTeacherInfo(String teacherNumber);
 
+    List<Teacher> findAllTeachers();
+
     /**
      * 更新教师的相关信息,必须包含teacher的ID
      * @param teacher 教师信息的实体对象

@@ -1,4 +1,5 @@
 package xyz.ruankun.sxsicau.service.impl;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -116,6 +117,31 @@ public class UserInfoServiceImpl implements UserInfoService {
             return null;
         }
         return teacher;
+    }
+
+    @Override
+    public List<Teacher> findAllTeachers() {
+
+        List<Teacher> teachers;
+        boolean flag = true;
+        List<Teacher> ans = null;
+        try {
+            teachers = teacherRepository.findAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error("在数据库中查找所有导师信息时抛出了异常");
+            return null;
+        }
+        for (Teacher t :
+                teachers) {
+            if (flag){
+                ans = new ArrayList<>();
+                flag = false;
+            }
+            if (!t.getSxIsLock())
+                ans.add(t);
+        }
+        return ans;
     }
 
     @Override

@@ -11,11 +11,45 @@
  Target Server Version : 80011
  File Encoding         : 65001
 
- Date: 17/08/2019 17:14:39
+ Date: 21/09/2019 15:46:23
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for hibernate_sequence
+-- ----------------------------
+DROP TABLE IF EXISTS `hibernate_sequence`;
+CREATE TABLE `hibernate_sequence` (
+  `next_val` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of hibernate_sequence
+-- ----------------------------
+BEGIN;
+INSERT INTO `hibernate_sequence` VALUES (14);
+INSERT INTO `hibernate_sequence` VALUES (14);
+INSERT INTO `hibernate_sequence` VALUES (14);
+INSERT INTO `hibernate_sequence` VALUES (14);
+INSERT INTO `hibernate_sequence` VALUES (14);
+INSERT INTO `hibernate_sequence` VALUES (14);
+INSERT INTO `hibernate_sequence` VALUES (14);
+INSERT INTO `hibernate_sequence` VALUES (14);
+INSERT INTO `hibernate_sequence` VALUES (14);
+INSERT INTO `hibernate_sequence` VALUES (14);
+INSERT INTO `hibernate_sequence` VALUES (14);
+INSERT INTO `hibernate_sequence` VALUES (14);
+INSERT INTO `hibernate_sequence` VALUES (14);
+INSERT INTO `hibernate_sequence` VALUES (14);
+INSERT INTO `hibernate_sequence` VALUES (14);
+INSERT INTO `hibernate_sequence` VALUES (14);
+INSERT INTO `hibernate_sequence` VALUES (14);
+INSERT INTO `hibernate_sequence` VALUES (14);
+INSERT INTO `hibernate_sequence` VALUES (14);
+INSERT INTO `hibernate_sequence` VALUES (14);
+COMMIT;
 
 -- ----------------------------
 -- Table structure for sx_dict_campus
@@ -1003,6 +1037,35 @@ CREATE TABLE `sx_ext_reply` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='评论的回复表';
 
 -- ----------------------------
+-- Table structure for sx_index_banner
+-- ----------------------------
+DROP TABLE IF EXISTS `sx_index_banner`;
+CREATE TABLE `sx_index_banner` (
+  `sx_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `sx_imgsrc` text NOT NULL COMMENT '轮播图的图片',
+  `sx_news_id` bigint(20) unsigned NOT NULL COMMENT '关联到news',
+  `sx_gmt_create` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `sx_gmt_modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+  `sx_is_visible` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否可见',
+  PRIMARY KEY (`sx_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for sx_index_news
+-- ----------------------------
+DROP TABLE IF EXISTS `sx_index_news`;
+CREATE TABLE `sx_index_news` (
+  `sx_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `sx_title` varchar(255) NOT NULL COMMENT '标题',
+  `sx_gmt_create` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `sx_gmt_modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+  `sx_read` int(11) unsigned NOT NULL DEFAULT '2' COMMENT '阅读次数',
+  `sx_content` text NOT NULL COMMENT '正文内容',
+  `sx_is_visible` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否可见',
+  PRIMARY KEY (`sx_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
 -- Table structure for sx_practice
 -- ----------------------------
 DROP TABLE IF EXISTS `sx_practice`;
@@ -1111,7 +1174,7 @@ CREATE TABLE `sx_student` (
 -- Records of sx_student
 -- ----------------------------
 BEGIN;
-INSERT INTO `sx_student` VALUES (1, '20140161', '阮坤', '18783551223', 'sadsadsad', '男', '汉族', '2015', '风景园林学院', '动物医学(小动物医学方向)', '1', '雅安校区', 'http://jiaowu.sicau.edu.cn/photo/20140161.jpg', 0, '2019-04-23 21:03:17', '2019-05-27 15:49:51', 5);
+INSERT INTO `sx_student` VALUES (1, '20140161', '阮坤', '18783551223', '266915', '男', '汉族', '2015', '风景园林学院', '动物医学(小动物医学方向)', '1', '雅安校区', 'http://jiaowu.sicau.edu.cn/photo/20140161.jpg', 0, '2019-04-23 21:03:17', '2019-08-22 14:21:16', 5);
 INSERT INTO `sx_student` VALUES (2, '20150162', '赵舜', '18227590043', '@！#gh', '男', '汉族', '2015', '信息工程学院', '计算机科学与技术', '5', '雅安校区', 'http://jiaowu.sicau.edu.cn/photo/20140243.jpg', 0, '2019-04-23 22:24:50', '2019-05-27 15:49:52', 5);
 INSERT INTO `sx_student` VALUES (3, '20190111', '少二', '18227590043', 'ruankun5820', '女', '汉族', '2018', '信息工程学院', '农业信息工程', '3', '雅安校区', 'http://jiaowu.sicau.edu.cn/photo/20140243.jpg', 0, '2019-04-25 19:03:31', '2019-05-27 15:49:53', 5);
 INSERT INTO `sx_student` VALUES (4, '20140243', '李二', '18227590043', 'ruankun5820', '男', '汉族', '2014', '信息工程学院', '计算机科学与技术', '5', '雅安校区', 'http://jiaowu.sicau.edu.cn/photo/20140243.jpg', 1, '2019-04-25 19:03:02', '2019-08-15 15:19:07', 5);
@@ -1269,11 +1332,39 @@ INSERT INTO `sx_tutor` VALUES (23, '20180001', '10004', 0, 0, '2019-08-16 22:26:
 COMMIT;
 
 -- ----------------------------
+-- Table structure for wx_token
+-- ----------------------------
+DROP TABLE IF EXISTS `wx_token`;
+CREATE TABLE `wx_token` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `token` varchar(255) NOT NULL COMMENT 'token',
+  `userid` bigint(20) NOT NULL COMMENT '用户ID',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `validity` int(11) NOT NULL COMMENT '有效期',
+  `ip` varchar(255) DEFAULT NULL COMMENT 'IP地址',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='存储token用,顺便记录用户登录的信息';
+
+-- ----------------------------
+-- Records of wx_token
+-- ----------------------------
+BEGIN;
+INSERT INTO `wx_token` VALUES (7, '1295987d4ff4fd921c584d7d2515a781', 6, '2019-08-22 14:00:30', '2019-08-22 14:00:30', 1800, '0.0.0.0');
+INSERT INTO `wx_token` VALUES (8, 'd7384b2b72c4f6e3b71f5377e770aa3d', 6, '2019-08-22 14:01:10', '2019-08-22 14:01:10', 1800, '0.0.0.0');
+INSERT INTO `wx_token` VALUES (9, 'da2e659def87b0d22d738724c2af7673', 6, '2019-08-22 14:03:55', '2019-08-22 14:03:55', 1800, '0.0.0.0');
+INSERT INTO `wx_token` VALUES (10, '064134775a32021ade8dc50822403bcb', 6, '2019-08-22 14:08:01', '2019-08-22 14:08:01', 1800, '0.0.0.0');
+INSERT INTO `wx_token` VALUES (11, 'b680f8de4dbe15525cd34ec264dc28e5', 6, '2019-08-22 14:10:20', '2019-08-22 14:10:20', 1800, '0.0.0.0');
+INSERT INTO `wx_token` VALUES (12, '1fdef0c9864aeebbaad30f7dbf618474', 6, '2019-08-22 14:13:11', '2019-08-22 14:13:11', 1800, '0.0.0.0');
+INSERT INTO `wx_token` VALUES (13, 'db061ae2548d50bfc861da7a9e66d314', 6, '2019-08-22 14:15:29', '2019-08-22 14:23:09', 1800, '0.0.0.0');
+COMMIT;
+
+-- ----------------------------
 -- Table structure for wx_user
 -- ----------------------------
 DROP TABLE IF EXISTS `wx_user`;
 CREATE TABLE `wx_user` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `openid` varchar(255) NOT NULL COMMENT 'openid,用户唯一标示',
   `wx_number` varchar(255) DEFAULT NULL COMMENT '微信号',
   `is_black` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否是黑名单用户',
@@ -1283,6 +1374,13 @@ CREATE TABLE `wx_user` (
   `binding_role` int(11) DEFAULT NULL COMMENT '绑定角色 0 学生  1 教师',
   PRIMARY KEY (`id`),
   UNIQUE KEY `wx_user_wx_number_uindex` (`wx_number`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户的微信信息';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='用户的微信信息';
+
+-- ----------------------------
+-- Records of wx_user
+-- ----------------------------
+BEGIN;
+INSERT INTO `wx_user` VALUES (6, 'ob1oa0c8iB3lie31m3AhHYderKEA', NULL, 0, '2019-08-22 14:00:30', '2019-08-22 14:00:30', '20140161', 0);
+COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
