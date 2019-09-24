@@ -8,10 +8,6 @@ import xyz.ruankun.sxsicau.service.NewsService;
 
 import java.util.List;
 
-/**
- * @Author NingXiang
- * @Date 2019-9-23 16:36:55
- */
 @Service
 public class NewsServiceImpl implements NewsService {
     @Autowired

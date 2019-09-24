@@ -10,10 +10,6 @@ import javax.validation.constraints.Null;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * @Author NadevXiang
- * @Date 2019-9-23 15:30:12
- */
 @Service
 public class BannerServiceImpl implements BannerService {
     @Autowired
