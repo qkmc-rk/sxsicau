@@ -2,9 +2,11 @@ package xyz.ruankun.sxsicau.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import xyz.ruankun.sxsicau.entity.Auth;
 import xyz.ruankun.sxsicau.entity.Banner;
 import xyz.ruankun.sxsicau.entity.News;
 import xyz.ruankun.sxsicau.entity.Teacher;
+import xyz.ruankun.sxsicau.repository.AuthRespository;
 import xyz.ruankun.sxsicau.service.BannerService;
 import xyz.ruankun.sxsicau.service.NewsService;
 import xyz.ruankun.sxsicau.service.UserInfoService;
@@ -110,8 +112,9 @@ public class AnonymityController {
      * @return: java.util.List<xyz.ruankun.sxsicau.entity.News>
      */
     @GetMapping("/news")
-    public List<News> findNews() {
-        return newsService.findAll();
+    public ResponseEntity findNews() {
+        return ControllerUtil.getDataResult(newsService.findAll());
     }
+
 
 }
